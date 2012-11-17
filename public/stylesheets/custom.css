@@ -13,10 +13,10 @@ body {
 .footer {
     position: fixed;
     width: 100%;
-    background: transparent;
+    background: whiteSmoke;
+    opacity: 95;
     color: #000;
     clear: both;
-    font-size: 50%;
     margin-top: 1.5em;
     padding: 1em;
     min-height: 1em;
