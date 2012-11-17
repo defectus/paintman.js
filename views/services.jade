@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    $(function () {
+        $('.service').each(function (i, e) {
+            $(this).delay(i * 500).css({display:'block', visibility:'visible', opacity:0}).animate({opacity:1}, 500);
+        });
+    });
+</script>
+
+<section id="intro" class="first">
+    <h1><g:message code="service.heading"/></h1>
+</section>
+
+<div class="row-fluid" style="margin-top: 25px;">
+    <div class="span12">
+        <ul class="unstyled">
+            <li class="service hidden">· <g:message code="service.decoration"/></li>
+            <li class="service hidden">· <g:message code="service.childbedroom"/></li>
+            <li class="service hidden">· <g:message code="service.interiors"/></li>
+            <li class="service hidden">· <g:message code="service.ads"/></li>
+            <li class="service hidden">· <g:message code="service.calligraphy"/></li>
+            <li class="service hidden">· <g:message code="service.painter"/></li>
+            <li class="service hidden">· <g:message code="service.airbrush"/></li>
+            <li class="service hidden">· <g:message code="service.facade"/></li>
+            <li class="service hidden">&nbsp;</li>
+            <li class="service hidden">· <g:message code="service.others"/></li>
+        </ul>
+    </div>
+</div>
