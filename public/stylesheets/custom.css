@@ -1,20 +1,16 @@
 body {
-    /*background: #ffffff url(../images/painter.jpg) no-repeat center center fixed;*/
-    /*-webkit-background-size: cover;*/
-    /*-moz-background-size: cover;*/
-    /*-o-background-size: cover;*/
-    /*background-size: cover;*/
-    /*background-size: 100% auto;*/
-    /*background-origin: padding-box;*/
-    /*filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src = '../images/painter.jpg', sizingMethod = 'scale');*/
-    /*-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/painter.jpg', sizingMethod='scale')";*/
+    font-family: 'Cantora One', sans-serif !important;
+}
+
+p {
+    font-size: 1.5em;
 }
 
 .footer {
     position: fixed;
     width: 100%;
     background: whiteSmoke;
-    opacity: 95;
+    opacity: 0.75;
     color: #000;
     clear: both;
     margin-top: 1.5em;
