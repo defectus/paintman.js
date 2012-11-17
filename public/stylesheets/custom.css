@@ -1,0 +1,50 @@
+body {
+    /*background: #ffffff url(../images/painter.jpg) no-repeat center center fixed;*/
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    /*background-size: cover;*/
+    /*background-size: 100% auto;*/
+    /*background-origin: padding-box;*/
+    /*filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src = '../images/painter.jpg', sizingMethod = 'scale');*/
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/painter.jpg', sizingMethod='scale')";*/
+}
+
+.footer {
+    position: fixed;
+    width: 100%;
+    background: transparent;
+    color: #000;
+    clear: both;
+    font-size: 50%;
+    margin-top: 1.5em;
+    padding: 1em;
+    min-height: 1em;
+    bottom: 0;
+    text-align: right;
+}
+
+.footer a {
+    color: #255b17;
+}
+
+.painters {
+    position:fixed;
+    bottom: 0;
+    z-index: -1;
+    width: 100%;
+}
+.painters img {
+    float: right;
+    clear: both;
+}
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -60px;
+}
+#push,
+#footer {
+    height: 60px;
+}
