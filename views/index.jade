@@ -1,9 +1,33 @@
 extends layout
 
 block content
+    script
+        $(document).ready(function(){
+            $.picasa.images('107338561604267943588', '5783652459313142673', function(images){
+                $.each(images, function(i, image) {
+                    var $photoDiv = $('<div>', {
+                        'class': i == 0 ? 'active item' : 'item'
+                    }).append($('<img>', {
+                        src: image.url,
+                        style: 'width:450px'
+                    }));
+                    $('div#sampleWorkCarousel div.carousel-inner').append($photoDiv);
+                });
+                $('div#sampleWorkCarousel').css('visibility', 'visible').carousel({
+                    interval: 5000
+                });
+            });
+        });
+
     section#intro.first
         h1
             | Vítejte na stránkách firmy Oldřich Milostný, malířské práce
+
+        div#sampleWorkCarousel.carousel.slide(style='visibility:hidden;height:350px')
+            div.carousel-inner
+            a.carousel-control.left(href="#sampleWorkCarousel",data-slide="prev")&lsaquo;
+            a.carousel-control.right(href="#sampleWorkCarousel",data-slide="next")&rsaquo;
+
         p
             | V případě zájmu mě kontaktujte na telefonním čísle 725 656 360
 

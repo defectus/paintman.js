@@ -34,13 +34,6 @@ p {
     float: right;
     clear: both;
 }
-#wrap {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -60px;
-}
-#push,
-#footer {
-    height: 60px;
+#sampleWorkCarousel{
+    width:450px;
 }
