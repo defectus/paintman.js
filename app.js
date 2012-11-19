@@ -29,6 +29,7 @@ app.configure('development', function () {
 });
 
 app.get('/', routes.index);
+app.get('/services', routes.services);
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function () {

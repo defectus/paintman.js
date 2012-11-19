@@ -9,3 +9,10 @@ exports.index = function (req, res) {
         flash:null,
         status: 'Server status OK (@ ' + moment().format('hh:mm:ss')});
 };
+
+exports.services = function (req, res) {
+    res.render('services', {
+        title:'Oldřich Milostný, malířské práce',
+        flash:null,
+        status: 'Server status OK (@ ' + moment().format('hh:mm:ss')});
+};
