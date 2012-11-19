@@ -37,3 +37,11 @@ p {
 #sampleWorkCarousel{
     width:450px;
 }
+.menu {
+    /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+    font-size: 1.5em
+}
+
+.services-list {
+    font-size: 1.2em
+}

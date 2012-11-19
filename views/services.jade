@@ -5,7 +5,10 @@ block content
     script
         $(function () {
             $('.service').each(function (i, e) {
-                $(this).delay(i * 500).css({display:'block', visibility:'visible', opacity:0}).animate({opacity:1}, 500);
+                if (/(\S)+/.test($(this).text())) {
+                    console.log($(this).text() + '->' + /(\S)+/.test($(this).text()));
+                    $(this).delay(i * 500).css({display:'block', visibility:'visible', opacity:0}).animate({opacity:1}, 500);
+                }
             });
         });
     
@@ -13,16 +16,15 @@ block content
     section#intro.first
         h1 Naše firma Vám nabízí tyto služby:
     
-    div.row-fluid(style="margin-top: 25px;")
-        div.span12
-            ul.unstyled
-                li.service.hidden · Dekorativní malby na stěny
-                li.service.hidden · Dětské pokoje
-                li.service.hidden · Interiéry
-                li.service.hidden · Malovaná reklama
-                li.service.hidden · Písmomalířství
-                li.service.hidden · Malířské a lakýrnické práce
-                li.service.hidden · Airbrush
-                li.service.hidden · Nátěry fasád
-                li.service.hidden · &nbsp;
-                li.service.hidden · Po dohodě i další služby
+        div.row-fluid(style="margin-top: 25px;")
+            div.span12
+                ul.unstyled.services-list
+                    li.service.hidden · Dekorativní malby na stěny
+                    li.service.hidden · Dětské pokoje
+                    li.service.hidden · Interiéry
+                    li.service.hidden · Malovaná reklama
+                    li.service.hidden · Písmomalířství
+                    li.service.hidden · Malířské a lakýrnické práce
+                    li.service.hidden · Airbrush
+                    li.service.hidden · Nátěry fasád
+                    li.service.hidden(style='margin-top:25px') · Po dohodě i další služby
