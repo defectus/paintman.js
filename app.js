@@ -5,6 +5,7 @@
 var express = require('express')
     , routes = require('./routes')
     , map = require('./routes/map')
+    , contactForm = require('./routes/contactForm.js')
     , about = require('./routes/about')
     , services = require('./routes/services.js')
     , http = require('http')
@@ -35,6 +36,9 @@ app.get('/map', map.show);
 app.get('/services', services.show);
 app.get('/contact', about.contact);
 app.get('/about', about.about);
+app.get('/map', map.show);
+app.get('/contactForm/show', contactForm.show);
+app.get('/contactForm/save', contactForm.save);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
