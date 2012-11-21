@@ -10,6 +10,7 @@ var express = require('express')
     , services = require('./routes/services.js')
     , http = require('http')
     , path = require('path')
+    , common = require('./services/common')    
     , moment = require('moment');
 
 var app = express();
@@ -29,6 +30,11 @@ app.configure(function () {
 
 app.configure('development', function () {
     app.use(express.errorHandler());
+    common.gmapKey = 'AIzaSyAfyHb-V7BBWmU2d24H5TAJwOl39_wjUGY'
+});
+
+app.configure('production', function () {
+    common.gmapKey = 'AIzaSyChws2jvPF4rQHny3NCRzRQZJq_wanSbEw';
 });
 
 app.get('/', routes.index);
