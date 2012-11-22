@@ -2,6 +2,10 @@ body {
     font-family: 'Cantora One', sans-serif !important;
 }
 
+img {
+    max-width: none;
+}
+
 p {
     font-size: 1.5em;
 }
