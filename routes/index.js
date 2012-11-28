@@ -9,3 +9,8 @@ exports.index = function (req, res) {
         flash:null,
         status: 'Server status OK (@ ' + moment().format('hh:mm:ss')});
 };
+
+exports.robots = function (req, res) {
+    res.send('User-agent: *\n\
+Disallow:');
+};

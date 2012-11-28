@@ -38,6 +38,7 @@ app.configure('production', function () {
 });
 
 app.get('/', routes.index);
+app.get('/Robots.txt', routes.robots);
 app.get('/map', map.show);
 app.get('/services', services.show);
 app.get('/contact', about.contact);
