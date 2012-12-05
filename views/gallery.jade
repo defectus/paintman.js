@@ -2,60 +2,7 @@ extends layout
 
 block content
 
-    script
-        $(function () {
-            function prepareGallery() {
-                $.picasa.images('107338561604267943588', '5783652459313142673', function(images){
-
-                });
-                $("#preview").click(function () {
-                    $("#preview").fadeOut("slow");
-                });
-                // add onclick zoom functionality
-                $allPictures.each(function () {
-                    $(this).click(function () {
-                        $("#preview").attr("src", $(this).attr("src").replace("s144", "s800"));
-                        $("#preview").load(function(){
-                            $("#preview").css("left", ($(document).width() - $("#preview").width()) / 2);
-                            $("#preview").fadeIn("slow");
-                        });
-                    });
-                });
-                // preview onclick close functionality
-                $("#preview").click(function () {
-                    $("#preview").fadeOut("slow");
-                });
-                // adjust picturebox size so it nicely fits in the screen (250px is roughly the size header and footer)
-                $(".picturebox").height($(document).height() - 250);
-                // init picture index array
-                var pictureIndexes = [];
-                for (var i = 0; i < $allPictures.size(); i++)
-                    pictureIndexes.push(i);
-                // shuffle it
-                for (var j, x, i = pictureIndexes.length; i; j = parseInt(Math.random() * i), x = pictureIndexes[--i], pictureIndexes[i] = pictureIndexes[j], pictureIndexes[j] = x);
-                // trigger showing
-                for (var i = 0; i < pictureIndexes.length; i++) {
-                    window.setTimeout(
-                        "$($allPictures[" + pictureIndexes[i] + "]).animate({'opacity': 1}, 'slow');", i * 75);
-                }
-            }
-        });
-    
+    script(src='/javascripts/gallery/gallery.js')    
     
     section#intro.first
-        img#preview(style="display:none")
-        div.picturebox(title="Ťukněte abyste viděli celou fotku.")
-        h1 Naše firma Vám nabízí tyto služby:
-    
-        div.row-fluid(style="margin-top: 25px;")
-            div.span12
-                ul.unstyled.services-list
-                    li.service.hidden · Dekorativní malby na stěny
-                    li.service.hidden · Dětské pokoje
-                    li.service.hidden · Interiéry
-                    li.service.hidden · Malovaná reklama
-                    li.service.hidden · Písmomalířství
-                    li.service.hidden · Malířské a lakýrnické práce
-                    li.service.hidden · Airbrush
-                    li.service.hidden · Nátěry fasád
-                    li.service.hidden(style='margin-top:25px') · Po dohodě i další služby
+        div.pictureBox(style='display:hidden')

@@ -5,6 +5,7 @@
 var express = require('express')
     , routes = require('./routes')
     , map = require('./routes/map')
+    , gallery = require('./routes/gallery')    
     , contactForm = require('./routes/contactForm.js')
     , about = require('./routes/about')
     , services = require('./routes/services.js')
@@ -43,7 +44,7 @@ app.get('/map', map.show);
 app.get('/services', services.show);
 app.get('/contact', about.contact);
 app.get('/about', about.about);
-app.get('/map', map.show);
+app.get('/gallery', gallery.show);
 app.get('/contactForm/show', contactForm.show);
 app.get('/contactForm/save', contactForm.save);
 

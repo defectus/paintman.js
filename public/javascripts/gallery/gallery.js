@@ -1,18 +1,37 @@
+$(document).ready(function(){
+    $.picasa.images('107338561604267943588', '5783652459313142673', function(images){
+        $.each(images, function(i, image) {
+            var $photoDiv = $('<div>', {
+                'class': i === 0 ? 'active item' : 'item'
+            }).append($('<img>', {
+                src: image.url,
+                style: 'width:600px;height:400px'
+            }));
+            $('div.pictureBox').append($photoDiv);
+        });
+    });
+});
+
 (function ($) {
     var methods = {
-        init:function (settings) {
-            var images = this.find('img').map(function(){
-                return this.src;
+        init:function (settings) {            
+            var _this = this, images = this.find('img').map(function(){
+                return _this.src;
             }).get();
             this.data('images', images);
             this.data('settings', $.extend({
             }, settings));
             return this;
         },
-        show:function (s) {
+        show:function () {
+            if (this.size() === 0){
+                methods.build();
+            }
+            this.show();
             return this;
         },
         hide:function () {
+            this.hide();
             return this;
         },
         build:function () {            
@@ -44,12 +63,12 @@
                         '-moz-border-radius': '4px',
                         'border-radius': '4px',
                         cursor: 'pointer'
-                    }}).on('click', imgOnClick)
+                    }}).on('click', imgOnClick);
                 $container.append($img);                
             });
         },
         destroy:function () {
-
+            this.remove();
         }
     };
 
