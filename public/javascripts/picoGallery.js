@@ -1,31 +1,32 @@
-$(document).ready(function(){
-    $.picasa.images('107338561604267943588', '5783652459313142673', function(images){
-        $.each(images, function(i, image) {
-            var $photoDiv = $('<div>', {
-                'class': i === 0 ? 'active item' : 'item'
-            }).append($('<img>', {
-                src: image.url,
-                style: 'width:600px;height:400px'
-            }));
-            $('div.pictureBox').append($photoDiv);
-        });
-    });
-});
-
 (function ($) {
     var methods = {
         init:function (settings) {            
             var _this = this, images = this.find('img').map(function(){
-                return _this.src;
+                var $elem = $(this), src = $elem.attr('src');
+                return src;
             }).get();
             this.data('images', images);
             this.data('settings', $.extend({
+                effect: 'randomize', // [none|randomize|flip]
+                thumbWidth: 'auto',
+                thumbHeight: 'auto',
+                height: 'auto',
+                width: 'auto'
             }, settings));
             return this;
         },
         show:function () {
-            if (this.size() === 0){
-                methods.build();
+            var settings = this.data('settings')
+            if (this.size() > 0){
+                methods.build.call(this);
+            }            
+            if (settings.effect === 'randomize') {
+                var $images = this.find('img');
+                for(var i = $images.size(),x,y;i;--i,y=Math.round(Math.random()*i), x=$images[i],$images[i]=$images[y],$images[y]=x);
+                $images.each(function(i,e){
+                    var _this = $(this)
+                    window.setTimeout(function(){_this.animate({'opacity': 1},'slow')}, i * 75);
+                });             
             }
             this.show();
             return this;
@@ -41,8 +42,8 @@ $(document).ready(function(){
             this.children().remove();
             var $container = $('<div>',{
                 css: {
-                    width: settings.$containerWidth,
-                    height: settings.$containerHeight,
+                    width: settings.width,
+                    height: settings.height,
                     position: 'relative'
                 }
             });
@@ -50,11 +51,12 @@ $(document).ready(function(){
                 var $img = $('<img>',{
                     src:v,
                     css:{
-                        width: settings.thumbnailWidth,
                         position: 'relative',
                         border: 0,
-                        margin: 0,
+                        margin: '5px',
                         padding: 0,
+                        width: settings.thumbWidth,
+                        height: settings.thumbHeight,
                         'font-weight': 'normal',
                         opacity: 0,
                         '-moz-box-shadow': '0 0 4px 1px #ddf',
@@ -63,17 +65,19 @@ $(document).ready(function(){
                         '-moz-border-radius': '4px',
                         'border-radius': '4px',
                         cursor: 'pointer'
-                    }}).on('click', imgOnClick);
-                $container.append($img);                
+                    }}).on('click', imgOnClick);                
+                $container.append($img);                                
             });
+            _this.append($container);
         },
         destroy:function () {
-            this.remove();
+            this.find('div').remove();
         }
     };
 
     function imgOnClick() {
-        var $preview = $(document).find('body>#preview').size() > 0 ? $(document).find('body>#preview'): $('<img>', {
+        var $preview = $(document).find('body>#preview').size() > 0 ? $(document).find('body>#preview'): function(){
+            var $img = $('<img>', {
             id: 'preview',
             css: {
                 display: 'none',
@@ -83,9 +87,13 @@ $(document).ready(function(){
                 '-webkit-box-shadow': '0 0 4px 1px #ddf',
                 'box-shadow': '0 0 4px 1px #ddf',
                 '-moz-border-radius': '4px',
-                'border-radius': '4px'
-            }
-        });
+                'border-radius': '4px',
+                top: '100px'
+            }});
+            $('body').append($img);
+            return $img;
+        }();
+        $('body').css({position:'relative'});
         $preview.attr("src", $(this).attr("src").replace("s144", "s800"));
         $preview.on('load', function() {
             $preview.css("left", ($(document).width() - $("#preview").width()) / 2);
