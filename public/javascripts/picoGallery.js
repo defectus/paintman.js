@@ -7,7 +7,7 @@
             }).get();
             this.data('images', images);
             this.data('settings', $.extend({
-                effect: 'randomize', // [none|randomize|flip]
+                effect: 'randomize', // [none|randomize|reveal]
                 thumbWidth: 'auto',
                 thumbHeight: 'auto',
                 height: 'auto',
